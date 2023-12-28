@@ -1,0 +1,86 @@
+Still working...num records processed: 1000
+Still working...num records processed: 2000
+Still working...num records processed: 3000
+Still working...num records processed: 4000
+Still working...num records processed: 5000
+Still working...num records processed: 6000
+Still working...num records processed: 7000
+Still working...num records processed: 8000
+Still working...num records processed: 9000
+Still working...num records processed: 10000
+Still working...num records processed: 11000
+Still working...num records processed: 12000
+Still working...num records processed: 13000
+Still working...num records processed: 14000
+Still working...num records processed: 15000
+Still working...num records processed: 16000
+98001:average price=280645
+98002:average price=237359
+98003:average price=296472
+98004:average price=1378973
+98005:average price=811606
+98006:average price=849137
+98007:average price=601385
+98008:average price=637791
+98010:average price=425690
+98011:average price=492395
+98014:average price=451686
+98019:average price=427899
+98022:average price=318514
+98023:average price=284849
+98024:average price=601526
+98027:average price=620090
+98028:average price=464328
+98029:average price=616367
+98030:average price=294164
+98031:average price=299283
+98032:average price=251291
+98033:average price=834183
+98034:average price=527747
+98038:average price=369292
+98039:average price=2333986
+98040:average price=1178720
+98042:average price=308213
+98045:average price=450104
+98052:average price=642711
+98053:average price=686413
+98055:average price=306513
+98056:average price=431188
+98058:average price=353931
+98059:average price=486274
+98065:average price=529097
+98070:average price=485941
+98072:average price=574366
+98074:average price=687365
+98075:average price=793263
+98077:average price=660757
+98092:average price=338836
+98102:average price=929919
+98103:average price=584703
+98105:average price=831161
+98106:average price=320326
+98107:average price=570706
+98108:average price=357224
+98109:average price=858960
+98112:average price=1088841
+98115:average price=614723
+98116:average price=613911
+98117:average price=566842
+98118:average price=427729
+98119:average price=803348
+98122:average price=648954
+98125:average price=468406
+98126:average price=435618
+98133:average price=384635
+98136:average price=555573
+98144:average price=602619
+98146:average price=353969
+98148:average price=289308
+98155:average price=422437
+98166:average price=468804
+98168:average price=244430
+98177:average price=696849
+98178:average price=310337
+98188:average price=277417
+98198:average price=306277
+98199:average price=780717

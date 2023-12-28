@@ -1,0 +1,1 @@
+Input incident angle in degrees: Input index of refraction of first medium: Input index of refraction of second medium: Refracted angle in degrees: 32.1176

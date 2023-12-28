@@ -1,0 +1,5 @@
+98002:average price=190000
+98038:average price=518380
+98072:average price=490000
+98126:average price=556000
+98199:average price=543115

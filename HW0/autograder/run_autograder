@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Find the files to tested ( searches within folders )
+cd /autograder/source
+
+python3 check.py /autograder/submission
+
+# Runs the student's make file ( if you're not using makefiles then place you compile command here )
+# make
+
+python3 run_tests.py > /autograder/results/results.json
