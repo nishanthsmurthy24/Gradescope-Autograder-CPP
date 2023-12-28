@@ -163,3 +163,4 @@ cython_debug/
 solutions/
 in*.txt
 ref*.txt
+*.zip
