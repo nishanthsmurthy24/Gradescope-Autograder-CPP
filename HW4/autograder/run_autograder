@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Find the files to tested ( searches within folders )
+cd /autograder/source
+
+# Rename Files 
+python3 rename.py /autograder/submission /autograder/source
+
+# Run Tests here
+python3 run_tests.py > /autograder/results/results.json
