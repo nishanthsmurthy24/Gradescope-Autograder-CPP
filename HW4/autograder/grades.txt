@@ -1,0 +1,12 @@
+John Watson 43
+Sherlock Holmes 92
+Violet Crawley 83
+Greg Lestrade 74
+Missus Hudson 85
+Jim Moriarty 99.99999999999
+Molly Hooper 65
+Irene Adler 91
+Mycroft Holmes 82
+Tom Branson 83
+John Bates 89
+Mister Carson 79
