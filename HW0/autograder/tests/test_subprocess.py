@@ -48,7 +48,7 @@ class TestDiff(unittest.TestCase):
             test.kill()
             output = "Timeout expired!!"
 
-        ref = subprocess.Popen(["cat", "reference1.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        ref = subprocess.Popen(["cat", "ref1.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         reference = ref.stdout.read().strip().decode('utf-8')
 
         test.kill()
@@ -84,7 +84,7 @@ class TestDiff(unittest.TestCase):
             test.kill()
             output = "Timeout expired!!"
 
-        ref = subprocess.Popen(["cat", "reference2.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        ref = subprocess.Popen(["cat", "ref2.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         reference = ref.stdout.read().strip().decode('utf-8')
 
         test.kill()
@@ -120,7 +120,7 @@ class TestDiff(unittest.TestCase):
             test.kill()
             output = "Timeout expired!!"
 
-        ref = subprocess.Popen(["cat", "reference3.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        ref = subprocess.Popen(["cat", "ref3.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         reference = ref.stdout.read().strip().decode('utf-8')
 
         test.kill()
@@ -157,7 +157,7 @@ class TestDiff(unittest.TestCase):
             test.kill()
             output = "Timeout expired!!"
 
-        ref = subprocess.Popen(["cat", "reference4.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        ref = subprocess.Popen(["cat", "ref4.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         reference = ref.stdout.read().strip().decode('utf-8')
 
         test.kill()

@@ -60,7 +60,7 @@ class TestDiff(unittest.TestCase):
 
     # Associated point value within GradeScope
     @weight(5)
-    def test03(self):
+    def test02(self):
         #Title used by Gradescope 
         """HW4C - Compilation Test"""
 
