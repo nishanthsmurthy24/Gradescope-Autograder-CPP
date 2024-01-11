@@ -13,7 +13,7 @@ class TestDiff(unittest.TestCase):
         pass 
 
     # Associated point value within GradeScope
-    @weight(5)
+    @weight(0)
     def test00(self):
         #Title used by Gradescope 
         """Compilation Test"""
@@ -25,6 +25,9 @@ class TestDiff(unittest.TestCase):
 
         # Standard unit test case with an associated error message
         if "error" in output:
+            print("COMPILATION FAILED!!")
+            self.assertTrue( output == "", msg=output)
+        elif "Stop" in output:
             print("COMPILATION FAILED!!")
             self.assertTrue( output == "", msg=output)
         else:
