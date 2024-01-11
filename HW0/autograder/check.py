@@ -1,6 +1,7 @@
 import sys
 import glob
 import shutil
+import os
 
 def copy_cpp_file(src_path):
     # Find the first matching file with the specified pattern
@@ -11,13 +12,20 @@ def copy_cpp_file(src_path):
         # Take the first matching file
         cpp_file = cpp_files[0]
 
-        # Specify the fixed destination path for copying
-        fixed_destination_path = "/autograder/source/HW0.cpp"
+        # Extract the filename from the path
+        filename = os.path.basename(cpp_file)
 
-        # Copy the file to the fixed destination path
-        shutil.copy(cpp_file, fixed_destination_path)
+        # Check if the filename ends with "hw0.cpp" (case-insensitive)
+        if filename.lower().endswith("hw0.cpp"):
+            # Specify the fixed destination path for copying
+            fixed_destination_path = "/autograder/source/HW0.cpp"
 
-        # print(f"File {cpp_file} copied to {fixed_destination_path}")
+            # Copy the file to the fixed destination path
+            shutil.copy(cpp_file, fixed_destination_path)
+
+            # print(f"File {cpp_file} copied to {fixed_destination_path}")
+        else:
+            print(f"No matching file ending with 'hw0.cpp' found. Found: {filename}")
     else:
         print("No matching file found.")
 
