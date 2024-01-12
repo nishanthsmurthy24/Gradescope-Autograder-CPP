@@ -42,7 +42,7 @@ class TestDiff(unittest.TestCase):
         """Testcase - 1"""
 
         # Create a subprocess to run the students code and with our test file 
-        cat = subprocess.Popen(["cat", "in1.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        cat = subprocess.Popen(["cat", "/autograder/source/input/in1.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         test = subprocess.Popen(["./HW0"], stdin= cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         try:
             output, _ = test.communicate(timeout=10)
@@ -51,7 +51,7 @@ class TestDiff(unittest.TestCase):
             test.kill()
             output = "Timeout expired!!"
 
-        ref = subprocess.Popen(["cat", "ref1.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        ref = subprocess.Popen(["cat", "/autograder/source/reference/ref1.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         reference = ref.stdout.read().strip().decode('utf-8')
 
         test.kill()
@@ -78,7 +78,7 @@ class TestDiff(unittest.TestCase):
         """Testcase - 2"""
 
         # Create a subprocess to run the students code and with our test file 
-        cat = subprocess.Popen(["cat", "in2.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        cat = subprocess.Popen(["cat", "/autograder/source/input/in2.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         test = subprocess.Popen(["./HW0"], stdin= cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         try:
             output, _ = test.communicate(timeout=10)
@@ -87,7 +87,7 @@ class TestDiff(unittest.TestCase):
             test.kill()
             output = "Timeout expired!!"
 
-        ref = subprocess.Popen(["cat", "ref2.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        ref = subprocess.Popen(["cat", "/autograder/source/reference/ref2.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         reference = ref.stdout.read().strip().decode('utf-8')
 
         test.kill()
@@ -114,7 +114,7 @@ class TestDiff(unittest.TestCase):
         """Testcase - 3"""
 
         # Create a subprocess to run the students code and with our test file 
-        cat = subprocess.Popen(["cat", "in3.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        cat = subprocess.Popen(["cat", "/autograder/source/input/in3.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         test = subprocess.Popen(["./HW0"], stdin= cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         try:
             output, _ = test.communicate(timeout=10)
@@ -123,7 +123,7 @@ class TestDiff(unittest.TestCase):
             test.kill()
             output = "Timeout expired!!"
 
-        ref = subprocess.Popen(["cat", "ref3.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        ref = subprocess.Popen(["cat", "/autograder/source/reference/ref3.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         reference = ref.stdout.read().strip().decode('utf-8')
 
         test.kill()
@@ -151,7 +151,7 @@ class TestDiff(unittest.TestCase):
         """Testcase - 4"""
 
         # Create a subprocess to run the students code and with our test file 
-        cat = subprocess.Popen(["cat", "in4.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        cat = subprocess.Popen(["cat", "/autograder/source/input/in4.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         test = subprocess.Popen(["./HW0"], stdin= cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         try:
             output, _ = test.communicate(timeout=10)
@@ -160,7 +160,7 @@ class TestDiff(unittest.TestCase):
             test.kill()
             output = "Timeout expired!!"
 
-        ref = subprocess.Popen(["cat", "ref4.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        ref = subprocess.Popen(["cat", "/autograder/source/reference/ref4.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         reference = ref.stdout.read().strip().decode('utf-8')
 
         test.kill()
