@@ -377,3 +377,219 @@ class TestDiff(unittest.TestCase):
             print("COMPILATION SUCCESSFUL!!")
         
         test.terminate()
+
+    # Associated point value within GradeScope
+    @weight(1)
+    def test11(self):
+        #Title used by Gradescope 
+        """HW1B - Integer Representation"""
+
+        # Create a subprocess to run the students code and with our test file 
+        cat = subprocess.Popen(["cat", "/autograder/source/input/inB1.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        test = subprocess.Popen(["./HW1B"], stdin= cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        try:
+            output, _ = test.communicate(timeout=10)
+            output = output.strip().decode('utf-8')
+        except subprocess.TimeoutExpired:
+            test.kill()
+            output = "Timeout expired!!"
+    
+        ref = subprocess.Popen(["cat", "/autograder/source/reference/refB1.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        reference = ref.stdout.read().strip().decode('utf-8')
+
+        cat.kill()
+        test.kill()
+        ref.kill()
+
+        result = compare_strings(output, reference)
+        print(result)
+
+        # Standard unit test case with an associated error message
+        if(self.assertTrue(output == reference, msg="")):
+            print("\nFAILED!!")
+        else:
+            print("\nPASSED!!")
+        
+        cat.terminate()
+        test.terminate()
+        ref.terminate()
+    
+    # Associated point value within GradeScope
+    @weight(1)
+    def test12(self):
+        #Title used by Gradescope 
+        """HW1B - Integer Representation"""
+
+        # Create a subprocess to run the students code and with our test file 
+        cat = subprocess.Popen(["cat", "/autograder/source/input/inB4.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        test = subprocess.Popen(["./HW1B"], stdin= cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        try:
+            output, _ = test.communicate(timeout=10)
+            output = output.strip().decode('utf-8')
+        except subprocess.TimeoutExpired:
+            test.kill()
+            output = "Timeout expired!!"
+    
+        ref = subprocess.Popen(["cat", "/autograder/source/reference/refB4.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        reference = ref.stdout.read().strip().decode('utf-8')
+
+        cat.kill()
+        test.kill()
+        ref.kill()
+
+        result = compare_strings(output, reference)
+        print(result)
+
+        # Standard unit test case with an associated error message
+        if(self.assertTrue(output == reference, msg="")):
+            print("\nFAILED!!")
+        else:
+            print("\nPASSED!!")
+        
+        cat.terminate()
+        test.terminate()
+        ref.terminate()
+    
+    # Associated point value within GradeScope
+    @weight(1)
+    def test13(self):
+        #Title used by Gradescope 
+        """HW1B - Float Representation"""
+
+        # Create a subprocess to run the students code and with our test file 
+        cat = subprocess.Popen(["cat", "/autograder/source/input/inB2.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        test = subprocess.Popen(["./HW1B"], stdin= cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        try:
+            output, _ = test.communicate(timeout=10)
+            output = output.strip().decode('utf-8')
+        except subprocess.TimeoutExpired:
+            test.kill()
+            output = "Timeout expired!!"
+    
+        ref = subprocess.Popen(["cat", "/autograder/source/reference/refB2.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        reference = ref.stdout.read().strip().decode('utf-8')
+
+        cat.kill()
+        test.kill()
+        ref.kill()
+
+        result = compare_strings(output, reference)
+        print(result)
+
+        # Standard unit test case with an associated error message
+        if(self.assertTrue(output == reference, msg="")):
+            print("\nFAILED!!")
+        else:
+            print("\nPASSED!!")
+        
+        cat.terminate()
+        test.terminate()
+        ref.terminate()
+
+    # Associated point value within GradeScope
+    @weight(1)
+    def test14(self):
+        #Title used by Gradescope 
+        """HW1B - Float Representation"""
+
+        # Create a subprocess to run the students code and with our test file 
+        cat = subprocess.Popen(["cat", "/autograder/source/input/inB5.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        test = subprocess.Popen(["./HW1B"], stdin= cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        try:
+            output, _ = test.communicate(timeout=10)
+            output = output.strip().decode('utf-8')
+        except subprocess.TimeoutExpired:
+            test.kill()
+            output = "Timeout expired!!"
+    
+        ref = subprocess.Popen(["cat", "/autograder/source/reference/refB5.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        reference = ref.stdout.read().strip().decode('utf-8')
+
+        cat.kill()
+        test.kill()
+        ref.kill()
+
+        result = compare_strings(output, reference)
+        print(result)
+
+        # Standard unit test case with an associated error message
+        if(self.assertTrue(output == reference, msg="")):
+            print("\nFAILED!!")
+        else:
+            print("\nPASSED!!")
+        
+        cat.terminate()
+        test.terminate()
+        ref.terminate()
+
+    # Associated point value within GradeScope
+    @weight(0.5)
+    def test15(self):
+        #Title used by Gradescope 
+        """HW1B - Invalid Option"""
+
+        # Create a subprocess to run the students code and with our test file 
+        cat = subprocess.Popen(["cat", "/autograder/source/input/inB3.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        test = subprocess.Popen(["./HW1B"], stdin= cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        try:
+            output, _ = test.communicate(timeout=10)
+            output = output.strip().decode('utf-8')
+        except subprocess.TimeoutExpired:
+            test.kill()
+            output = "Timeout expired!!"
+    
+        ref = subprocess.Popen(["cat", "/autograder/source/reference/refB3.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        reference = ref.stdout.read().strip().decode('utf-8')
+
+        cat.kill()
+        test.kill()
+        ref.kill()
+
+        result = compare_strings(output, reference)
+        print(result)
+
+        # Standard unit test case with an associated error message
+        if(self.assertTrue(output == reference, msg="")):
+            print("\nFAILED!!")
+        else:
+            print("\nPASSED!!")
+        
+        cat.terminate()
+        test.terminate()
+        ref.terminate()
+
+    # Associated point value within GradeScope
+    @weight(0.5)
+    def test16(self):
+        #Title used by Gradescope 
+        """HW1B - Invalid Option"""
+
+        # Create a subprocess to run the students code and with our test file 
+        cat = subprocess.Popen(["cat", "/autograder/source/input/inB6.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        test = subprocess.Popen(["./HW1B"], stdin= cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        try:
+            output, _ = test.communicate(timeout=10)
+            output = output.strip().decode('utf-8')
+        except subprocess.TimeoutExpired:
+            test.kill()
+            output = "Timeout expired!!"
+    
+        ref = subprocess.Popen(["cat", "/autograder/source/reference/refB6.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        reference = ref.stdout.read().strip().decode('utf-8')
+
+        cat.kill()
+        test.kill()
+        ref.kill()
+
+        result = compare_strings(output, reference)
+        print(result)
+
+        # Standard unit test case with an associated error message
+        if(self.assertTrue(output == reference, msg="")):
+            print("\nFAILED!!")
+        else:
+            print("\nPASSED!!")
+        
+        cat.terminate()
+        test.terminate()
+        ref.terminate()   
