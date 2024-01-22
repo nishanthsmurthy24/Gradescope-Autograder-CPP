@@ -19,12 +19,12 @@ def copy_files(src_path, dest_path):
 
     # Loop through the files and copy those ending with "_hw1A.cpp" and "_hw1B.cpp"
     for file_name in files:
-        if file_name.lower().endswith("_hw1a.cpp"):
+        if file_name.lower().endswith("hw1a.cpp"):
             src_file_path = os.path.join(src_path, file_name)
             dest_file_path = os.path.join(dest_path, "HW1A.cpp")
             shutil.copy(src_file_path, dest_file_path)
             files_copied = True
-        if file_name.lower().endswith("_hw1b.cpp"):
+        if file_name.lower().endswith("hw1b.cpp"):
             src_file_path = os.path.join(src_path, file_name)
             dest_file_path = os.path.join(dest_path, "HW1B.cpp")
             shutil.copy(src_file_path, dest_file_path)
@@ -32,7 +32,7 @@ def copy_files(src_path, dest_path):
 
     # Check if no files were copied
     if not files_copied:
-        print("Error: No files ending with '_hw1A.cpp' or '_hw1B.cpp' found in the source path.")
+        print("Error: No files ending with 'hw1A.cpp' or 'hw1B.cpp' found in the source path.")
         return
 
 if __name__ == "__main__":
