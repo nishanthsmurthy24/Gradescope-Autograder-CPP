@@ -166,3 +166,4 @@ ref*.txt
 *.zip
 input/
 reference/
+.vscode/settings.json
