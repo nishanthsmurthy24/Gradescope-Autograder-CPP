@@ -19,17 +19,17 @@ def copy_files(src_path, dest_path):
 
     # Loop through the files and copy those ending with "_hw2A.cpp", "_hw2B.cpp" and "_hw2C.cpp"
     for file_name in files:
-        if file_name.lower().endswith("_hw2a.cpp"):
+        if file_name.lower().endswith("hw2a.cpp"):
             src_file_path = os.path.join(src_path, file_name)
             dest_file_path = os.path.join(dest_path, "HW2A.cpp")
             shutil.copy(src_file_path, dest_file_path)
             files_copied = True
-        if file_name.lower().endswith("_hw2b.cpp"):
+        if file_name.lower().endswith("hw2b.cpp"):
             src_file_path = os.path.join(src_path, file_name)
             dest_file_path = os.path.join(dest_path, "HW2B.cpp")
             shutil.copy(src_file_path, dest_file_path)
             files_copied = True
-        if file_name.lower().endswith("_hw2c.cpp"):
+        if file_name.lower().endswith("hw2c.cpp"):
             src_file_path = os.path.join(src_path, file_name)
             dest_file_path = os.path.join(dest_path, "HW2C.cpp")
             shutil.copy(src_file_path, dest_file_path)
