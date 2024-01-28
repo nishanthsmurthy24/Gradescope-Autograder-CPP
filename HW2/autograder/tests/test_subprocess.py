@@ -11,6 +11,22 @@ def compare_strings(string1, string2):
     diff = list(differ.compare(string1.splitlines(), string2.splitlines()))
     return '\n'.join(diff)
 
+def extract_time_components(input_string):
+    keyword = "The new time is: "
+    index = input_string.find(keyword)
+
+    if index != -1:
+        time_part = input_string[index + len(keyword):]
+        time_components = time_part.split()  # Split the time part into components
+
+        if len(time_components) == 2:
+            number, am_pm = time_components
+            return number, am_pm
+        else:
+            return None, None  # Unexpected format
+    else:
+        return None, None  # Keyword not found in the input string
+
 class TestDiff(unittest.TestCase):
     def setUp(self):
         pass 
@@ -319,8 +335,273 @@ class TestDiff(unittest.TestCase):
         test.terminate()
 
     # Associated point value within GradeScope
-    @weight(0)
+    @weight(1.0)
+    def test09(self):
+        #Title used by Gradescope 
+        """HW2B - Backward Jump (Magnituide)"""
+
+        # Create a subprocess to run the students code and with our test file
+        cat = subprocess.Popen(["cat", "/autograder/source/input/inB1.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        
+        # Use subprocess.run to execute the command with a timeout
+        try:
+            test = subprocess.run(["./HW2B"], stdin=cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=5)
+            output = test.stdout.strip()
+        except subprocess.TimeoutExpired:
+            cat.kill()
+            output = "Timeout expired!! Program did not exit."
+
+        target = "9"
+
+        # Example usage:
+        time, meridian = extract_time_components(output)
+
+        print(f"### Expected ###\n{target} o'clock\n#### Found ####\n{time} o'clock")
+
+        cat.kill()
+
+        if target in output:
+            self.assertTrue(True, msg="")
+        else:
+            self.assertTrue(False, msg="")
+
+        cat.terminate()
+
+    # Associated point value within GradeScope
+    @weight(1.5)
+    def test10(self):
+        #Title used by Gradescope 
+        """HW2B - Backward Jump (Meridian)"""
+
+        # Create a subprocess to run the students code and with our test file
+        cat = subprocess.Popen(["cat", "/autograder/source/input/inB1.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        
+        # Use subprocess.run to execute the command with a timeout
+        try:
+            test = subprocess.run(["./HW2B"], stdin=cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=5)
+            output = test.stdout.strip()
+        except subprocess.TimeoutExpired:
+            cat.kill()
+            output = "Timeout expired!! Program did not exit."
+
+        target = "PM"
+
+        # Example usage:
+        time, meridian = extract_time_components(output)
+
+        print(f"### Expected ###\nPM\n#### Found ####\n{meridian}")
+
+        cat.kill()
+
+        if target in output:
+            self.assertTrue(True, msg="")
+        else:
+            self.assertTrue(False, msg="")
+
+        cat.terminate()
+
+     # Associated point value within GradeScope
+    @weight(1.0)
+    def test11(self):
+        #Title used by Gradescope 
+        """HW2B - Backward Jump (Magnituide)"""
+
+        # Create a subprocess to run the students code and with our test file
+        cat = subprocess.Popen(["cat", "/autograder/source/input/inB3.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        
+        # Use subprocess.run to execute the command with a timeout
+        try:
+            test = subprocess.run(["./HW2B"], stdin=cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=5)
+            output = test.stdout.strip()
+        except subprocess.TimeoutExpired:
+            cat.kill()
+            output = "Timeout expired!! Program did not exit."
+
+        target = "11"
+
+        # Example usage:
+        time, meridian = extract_time_components(output)
+
+        print(f"### Expected ###\n{target} o'clock\n#### Found ####\n{time} o'clock")
+
+        cat.kill()
+
+        if target in output:
+            self.assertTrue(True, msg="")
+        else:
+            self.assertTrue(False, msg="")
+
+        cat.terminate()
+    
+    # Associated point value within GradeScope
+    @weight(1.5)
+    def test12(self):
+        #Title used by Gradescope 
+        """HW2B - Backward Jump (Meridian)"""
+
+        # Create a subprocess to run the students code and with our test file
+        cat = subprocess.Popen(["cat", "/autograder/source/input/inB3.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        
+        # Use subprocess.run to execute the command with a timeout
+        try:
+            test = subprocess.run(["./HW2B"], stdin=cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=5)
+            output = test.stdout.strip()
+        except subprocess.TimeoutExpired:
+            cat.kill()
+            output = "Timeout expired!! Program did not exit."
+
+        target = "PM"
+
+        # Example usage:
+        time, meridian = extract_time_components(output)
+
+        print(f"### Expected ###\nPM\n#### Found ####\n{meridian}")
+
+        cat.kill()
+
+        if target in output:
+            self.assertTrue(True, msg="")
+        else:
+            self.assertTrue(False, msg="")
+
+        cat.terminate()
+
+    
+    # Associated point value within GradeScope
+    @weight(1.0)
     def test13(self):
+        #Title used by Gradescope 
+        """HW2B - Forward Jump (Magnitude)"""
+
+        # Create a subprocess to run the students code and with our test file
+        cat = subprocess.Popen(["cat", "/autograder/source/input/inB2.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        
+        # Use subprocess.run to execute the command with a timeout
+        try:
+            test = subprocess.run(["./HW2B"], stdin=cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=5)
+            output = test.stdout.strip()
+        except subprocess.TimeoutExpired:
+            cat.kill()
+            output = "Timeout expired!! Program did not exit."
+
+        target = "7"
+
+        # Example usage:
+        time, meridian = extract_time_components(output)
+
+        print(f"### Expected ###\n{target} o'clock\n#### Found ####\n{time} o'clock")
+
+        cat.kill()
+
+        if target in output:
+            self.assertTrue(True, msg="")
+        else:
+            self.assertTrue(False, msg="")
+
+        cat.terminate()
+    
+    # Associated point value within GradeScope
+    @weight(1.5)
+    def test14(self):
+        #Title used by Gradescope 
+        """HW2B - Forward Jump (Meridian)"""
+
+        # Create a subprocess to run the students code and with our test file
+        cat = subprocess.Popen(["cat", "/autograder/source/input/inB2.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        
+        # Use subprocess.run to execute the command with a timeout
+        try:
+            test = subprocess.run(["./HW2B"], stdin=cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=5)
+            output = test.stdout.strip()
+        except subprocess.TimeoutExpired:
+            cat.kill()
+            output = "Timeout expired!! Program did not exit."
+
+        target = "AM"
+
+        # Example usage:
+        time, meridian = extract_time_components(output)
+
+        print(f"### Expected ###\nPM\n#### Found ####\n{meridian}")
+
+        cat.kill()
+
+        if target in output:
+            self.assertTrue(True, msg="")
+        else:
+            self.assertTrue(False, msg="")
+
+        cat.terminate()
+    
+    # Associated point value within GradeScope
+    @weight(1.0)
+    def test15(self):
+        #Title used by Gradescope 
+        """HW2B - Forward Jump (Magnitude)"""
+
+        # Create a subprocess to run the students code and with our test file
+        cat = subprocess.Popen(["cat", "/autograder/source/input/inB4.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        
+        # Use subprocess.run to execute the command with a timeout
+        try:
+            test = subprocess.run(["./HW2B"], stdin=cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=5)
+            output = test.stdout.strip()
+        except subprocess.TimeoutExpired:
+            cat.kill()
+            output = "Timeout expired!! Program did not exit."
+
+        target = "7"
+
+        # Example usage:
+        time, meridian = extract_time_components(output)
+
+        print(f"### Expected ###\n{target} o'clock\n#### Found ####\n{time} o'clock")
+
+        cat.kill()
+
+        if target in output:
+            self.assertTrue(True, msg="")
+        else:
+            self.assertTrue(False, msg="")
+
+        cat.terminate()
+    
+    # Associated point value within GradeScope
+    @weight(1.5)
+    def test16(self):
+        #Title used by Gradescope 
+        """HW2B - Forward Jump (Meridian)"""
+
+        # Create a subprocess to run the students code and with our test file
+        cat = subprocess.Popen(["cat", "/autograder/source/input/inB4.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        
+        # Use subprocess.run to execute the command with a timeout
+        try:
+            test = subprocess.run(["./HW2B"], stdin=cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=5)
+            output = test.stdout.strip()
+        except subprocess.TimeoutExpired:
+            cat.kill()
+            output = "Timeout expired!! Program did not exit."
+
+        target = "PM"
+
+        # Example usage:
+        time, meridian = extract_time_components(output)
+
+        print(f"### Expected ###\nPM\n#### Found ####\n{meridian}")
+
+        cat.kill()
+
+        if target in output:
+            self.assertTrue(True, msg="")
+        else:
+            self.assertTrue(False, msg="")
+
+        cat.terminate()
+
+    # Associated point value within GradeScope
+    @weight(0)
+    def test17(self):
         #Title used by Gradescope 
         """HW2C - Compilation Test"""
 
