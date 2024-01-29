@@ -356,7 +356,7 @@ class TestDiff(unittest.TestCase):
         # Example usage:
         time, meridian = extract_time_components(output)
 
-        print(f"### Expected ###\n{target} o'clock\n#### Found ####\n{time} o'clock")
+        print(f"Started at 4 AM, moving Backwards in Time by 7 hrs\n\n### Expected ###\n{target} o'clock\n#### Found ####\n{time} o'clock")
 
         cat.kill()
 
@@ -389,7 +389,7 @@ class TestDiff(unittest.TestCase):
         # Example usage:
         time, meridian = extract_time_components(output)
 
-        print(f"### Expected ###\nPM\n#### Found ####\n{meridian}")
+        print(f"Started at 4 AM, moving Backwards in Time by 7 hrs\n\n### Expected ###\n{target}\n#### Found ####\n{meridian}")
 
         cat.kill()
 
@@ -417,12 +417,12 @@ class TestDiff(unittest.TestCase):
             cat.kill()
             output = "Timeout expired!! Program did not exit."
 
-        target = "11"
+        target = "9"
 
         # Example usage:
         time, meridian = extract_time_components(output)
 
-        print(f"### Expected ###\n{target} o'clock\n#### Found ####\n{time} o'clock")
+        print(f"Started at 12 PM, moving Backwards in Time by 15 hrs\n\n### Expected ###\n{target} o'clock\n#### Found ####\n{time} o'clock")
 
         cat.kill()
 
@@ -450,12 +450,12 @@ class TestDiff(unittest.TestCase):
             cat.kill()
             output = "Timeout expired!! Program did not exit."
 
-        target = "PM"
+        target = "AM"
 
         # Example usage:
         time, meridian = extract_time_components(output)
 
-        print(f"### Expected ###\nPM\n#### Found ####\n{meridian}")
+        print(f"Started at 12 PM, moving Backwards in Time by 15 hrs\n\n### Expected ###\n{target}\n#### Found ####\n{meridian}")
 
         cat.kill()
 
@@ -489,7 +489,7 @@ class TestDiff(unittest.TestCase):
         # Example usage:
         time, meridian = extract_time_components(output)
 
-        print(f"### Expected ###\n{target} o'clock\n#### Found ####\n{time} o'clock")
+        print(f"Started at 7 AM, moving Forwards in Time by 240 hrs\n\n### Expected ###\n{target} o'clock\n#### Found ####\n{time} o'clock")
 
         cat.kill()
 
@@ -522,7 +522,7 @@ class TestDiff(unittest.TestCase):
         # Example usage:
         time, meridian = extract_time_components(output)
 
-        print(f"### Expected ###\nPM\n#### Found ####\n{meridian}")
+        print(f"Started at 7 AM, moving Forwards in Time by 240 hrs\n\n### Expected ###\n{target}\n#### Found ####\n{meridian}")
 
         cat.kill()
 
@@ -555,7 +555,7 @@ class TestDiff(unittest.TestCase):
         # Example usage:
         time, meridian = extract_time_components(output)
 
-        print(f"### Expected ###\n{target} o'clock\n#### Found ####\n{time} o'clock")
+        print(f"Started at 1 PM, moving Forwards in Time by 6 hrs\n\n### Expected ###\n{target} o'clock\n#### Found ####\n{time} o'clock")
 
         cat.kill()
 
@@ -588,7 +588,7 @@ class TestDiff(unittest.TestCase):
         # Example usage:
         time, meridian = extract_time_components(output)
 
-        print(f"### Expected ###\nPM\n#### Found ####\n{meridian}")
+        print(f"Started at 1 PM, moving Forwards in Time by 6 hrs\n\n### Expected ###\n{target}\n#### Found ####\n{meridian}")
 
         cat.kill()
 
@@ -621,3 +621,162 @@ class TestDiff(unittest.TestCase):
             print("COMPILATION SUCCESSFUL!!")
         
         test.terminate()
+    
+    # Associated point value within GradeScope
+    @weight(1)
+    def test18(self):
+        #Title used by Gradescope 
+        """HW2C - Invalid Input"""
+
+        # Create a subprocess to run the students code and with our test file
+        cat = subprocess.Popen(["cat", "/autograder/source/input/inC4.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        
+        # Use subprocess.run to execute the command with a timeout
+        try:
+            test = subprocess.run(["./HW2C"], stdin=cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=5)
+            output = test.stdout.strip()
+        except subprocess.TimeoutExpired:
+            cat.kill()
+            output = "Timeout expired!! Program did not exit."
+
+        reference = subprocess.check_output(["head", "-n", "1", "/autograder/source/reference/refC4.txt"]).decode('utf-8').strip()
+
+        cat.kill()
+
+        buffer = output.splitlines()
+        out = buffer[0]
+
+        result = compare_strings(out, reference)
+        print(result)
+
+        # Standard unit test case with an associated error message
+        if reference in output:
+            print("\nPASSED!!")
+            self.assertTrue(True, msg="")
+        else:
+            print("\nFAILED!!")
+            self.assertTrue(False, msg="")
+
+        cat.terminate()
+
+    # Associated point value within GradeScope
+    @weight(1)
+    def test19(self):
+        #Title used by Gradescope 
+        """HW2C - Exit"""
+
+        # Create a subprocess to run the students code and with our test file
+        cat = subprocess.Popen(["cat", "/autograder/source/input/inC3.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        
+        # Use subprocess.run to execute the command with a timeout
+        try:
+            test = subprocess.run(["./HW2C"], stdin=cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=5)
+            output = test.stdout.strip()
+        except subprocess.TimeoutExpired:
+            cat.kill()
+            output = "Timeout expired!! Program did not exit."
+
+        ref = subprocess.Popen(["cat", "/autograder/source/reference/refC3.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        reference = ref.stdout.read().strip().decode('utf-8')
+
+        cat.kill()
+        ref.kill()
+
+        result = compare_strings(output, reference)
+        print(result)
+
+        # Standard unit test case with an associated error message
+        if(self.assertTrue(output == reference, msg="")):
+            print("\nFAILED!!")
+        else:
+            print("\nPASSED!!")
+
+        cat.terminate()
+        ref.terminate()
+
+    # Associated point value within GradeScope
+    @weight(0)
+    def test20(self):
+        #Title used by Gradescope 
+        """HW2C - Testcase - 1"""
+
+        # Create a subprocess to run the students code and with our test file
+        cat = subprocess.Popen(["cat", "/autograder/source/input/inC1.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        
+        # Use subprocess.run to execute the command with a timeout
+        try:
+            test = subprocess.run(["./HW2C"], stdin=cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=5)
+            output = test.stdout.strip()
+        except subprocess.TimeoutExpired:
+            cat.kill()
+            output = "Timeout expired!!"
+
+        print(f"Input Sequence = 4, 3, 2, 1, 0, -1\n\nYour Output\n\n{output}")
+
+        # Standard unit test case with an associated error message
+        if output.lower().endswith("ok, goodbye."):
+            print("\nProgram Exit Succesfully!!")
+            self.assertTrue(True, msg="")
+        else:
+            print("\nProgram did not Exit Successfully!!")
+            self.assertTrue(False, msg="")
+
+        cat.terminate()
+    
+    # Associated point value within GradeScope
+    @weight(0)
+    def test21(self):
+        #Title used by Gradescope 
+        """HW2C - Testcase - 2"""
+
+        # Create a subprocess to run the students code and with our test file
+        cat = subprocess.Popen(["cat", "/autograder/source/input/inC2.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        
+        # Use subprocess.run to execute the command with a timeout
+        try:
+            test = subprocess.run(["./HW2C"], stdin=cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=5)
+            output = test.stdout.strip()
+        except subprocess.TimeoutExpired:
+            cat.kill()
+            output = "Timeout expired!!"
+
+        print(f"Input Sequence = 4, 4, 4, 4, -1\n\nYour Output\n\n{output}")
+
+        # Standard unit test case with an associated error message
+        if output.lower().endswith("ok, goodbye."):
+            print("\nProgram Exit Succesfully!!")
+            self.assertTrue(True, msg="")
+        else:
+            print("\nProgram did not Exit Successfully!!")
+            self.assertTrue(False, msg="")
+
+        cat.terminate()
+    
+    # Associated point value within GradeScope
+    @weight(0)
+    def test22(self):
+        #Title used by Gradescope 
+        """HW2C - Testcase - 3"""
+
+        # Create a subprocess to run the students code and with our test file
+        cat = subprocess.Popen(["cat", "/autograder/source/input/inC5.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        
+        # Use subprocess.run to execute the command with a timeout
+        try:
+            test = subprocess.run(["./HW2C"], stdin=cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=5)
+            output = test.stdout.strip()
+        except subprocess.TimeoutExpired:
+            cat.kill()
+            output = "Timeout expired!!"
+
+        print(f"Input Sequence = 1, 2, 3, 4, 5, -1\n\nYour Output\n\n{output}")
+
+        # Standard unit test case with an associated error message
+        if output.lower().endswith("ok, goodbye."):
+            print("\nProgram Exit Succesfully!!")
+            self.assertTrue(True, msg="")
+        else:
+            print("\nProgram did not Exit Successfully!!")
+            self.assertTrue(False, msg="")
+
+        cat.terminate()
