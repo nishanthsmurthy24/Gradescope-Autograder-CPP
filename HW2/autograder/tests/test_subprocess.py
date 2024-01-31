@@ -393,7 +393,7 @@ class TestDiff(unittest.TestCase):
 
         cat.kill()
 
-        if target in output:
+        if target == meridian:
             self.assertTrue(True, msg="")
         else:
             self.assertTrue(False, msg="")
@@ -459,7 +459,7 @@ class TestDiff(unittest.TestCase):
 
         cat.kill()
 
-        if target in output:
+        if target == meridian:
             self.assertTrue(True, msg="")
         else:
             self.assertTrue(False, msg="")
@@ -526,7 +526,7 @@ class TestDiff(unittest.TestCase):
 
         cat.kill()
 
-        if target in output:
+        if target == meridian:
             self.assertTrue(True, msg="")
         else:
             self.assertTrue(False, msg="")
@@ -592,7 +592,7 @@ class TestDiff(unittest.TestCase):
 
         cat.kill()
 
-        if target in output:
+        if target == meridian:
             self.assertTrue(True, msg="")
         else:
             self.assertTrue(False, msg="")
