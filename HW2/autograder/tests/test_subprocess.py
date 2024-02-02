@@ -450,7 +450,7 @@ class TestDiff(unittest.TestCase):
             cat.kill()
             output = "Timeout expired!! Program did not exit."
 
-        target = "AM"
+        target = "PM"
 
         # Example usage:
         time, meridian = extract_time_components(output)
