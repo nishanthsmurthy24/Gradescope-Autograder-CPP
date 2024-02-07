@@ -39,7 +39,7 @@ class TestDiff(unittest.TestCase):
         test.terminate()
     
     # Associated point value within GradeScope
-    @weight(2.5)
+    @weight(2)
     def test01(self):
         #Title used by Gradescope 
         """HW3A - Positive Integer"""
@@ -57,6 +57,8 @@ class TestDiff(unittest.TestCase):
 
         cat.kill()
 
+        print(f"Input: 4\n")
+
         result = compare_strings(output, reference, 4)
         print(result)
 
@@ -71,7 +73,7 @@ class TestDiff(unittest.TestCase):
         cat.terminate()
 
     # Associated point value within GradeScope
-    @weight(2.5)
+    @weight(2)
     def test02(self):
         #Title used by Gradescope 
         """HW3A - Negative Integer"""
@@ -91,6 +93,8 @@ class TestDiff(unittest.TestCase):
 
         cat.kill()
 
+        print(f"Input: -7\n")
+
         result = compare_strings(output, reference, 7)
         print(result)
 
@@ -105,7 +109,7 @@ class TestDiff(unittest.TestCase):
         cat.terminate()
 
     # Associated point value within GradeScope
-    @weight(2.5)
+    @weight(4)
     def test03(self):
         #Title used by Gradescope 
         """HW3A - Loop Condition"""
@@ -125,6 +129,8 @@ class TestDiff(unittest.TestCase):
 
         cat.kill()
 
+        print(f"Input Sequence: -12, 6\n")
+
         result = compare_strings(output, reference, 18)
         print(result)
 
@@ -139,7 +145,7 @@ class TestDiff(unittest.TestCase):
         cat.terminate()
 
     # Associated point value within GradeScope
-    @weight(2.5)
+    @weight(2)
     def test04(self):
         #Title used by Gradescope 
         """HW3A - Invalid Input"""
@@ -161,6 +167,8 @@ class TestDiff(unittest.TestCase):
         cat.kill()
         ref.kill()
 
+        print(f"Input Sequence: 55, 0\n")
+
         result = compare_strings(output, reference, 2)
         print(result)
 
@@ -177,7 +185,7 @@ class TestDiff(unittest.TestCase):
     
     # Associated point value within GradeScope
     @weight(0)
-    def test06(self):
+    def test05(self):
         #Title used by Gradescope 
         """HW3B - Compilation Test"""
 
@@ -220,3 +228,32 @@ class TestDiff(unittest.TestCase):
             print("COMPILATION SUCCESSFUL!!")
         
         test.terminate()
+    
+    # Associated point value within GradeScope
+    @weight(0)
+    def test16(self):
+        #Title used by Gradescope 
+        """HW3C - Output"""
+
+        # Use subprocess.run to execute the command with a timeout
+        try:
+            test = subprocess.run(["./HW3C"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=10)
+            output = test.stdout.strip()
+        except subprocess.TimeoutExpired:
+            output = "Timeout expired!!"
+
+        print(f"Your Output\n\n{output}")
+
+        num_lines = len(output.splitlines())
+
+
+        # Standard unit test case with an associated error message
+        if num_lines > 29:
+            print("\nToo many Lines in output!!")
+            self.assertTrue(False, msg="")
+        if output != "Timeout expired!!":
+            print("\nProgram Exit Succesfully!!")
+            self.assertTrue(True, msg="")
+        else:
+            print("\nProgram did not Exit Successfully!!")
+            self.assertTrue(False, msg="")
