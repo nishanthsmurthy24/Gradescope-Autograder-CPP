@@ -603,6 +603,44 @@ class TestDiff(unittest.TestCase):
     @weight(0)
     def test17(self):
         #Title used by Gradescope 
+        """HW2B - I/O Formatting"""
+
+        # Create a subprocess to run the students code and with our test file
+        cat = subprocess.Popen(["cat", "/autograder/source/input/inB5.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        
+        # Use subprocess.run to execute the command with a timeout
+        try:
+            test = subprocess.run(["./HW2B"], stdin=cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=5)
+            output = test.stdout.strip()
+        except subprocess.TimeoutExpired:
+            cat.kill()
+            output = "Timeout expired!! Program did not exit."
+
+        ref = subprocess.Popen(["cat", "/autograder/source/reference/refB5.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        reference = ref.stdout.read().strip().decode('utf-8')
+
+        cat.kill()
+        ref.kill()
+
+        print(f"Started at 2 PM, moving Forwards/Backwards in Time by 0 hrs\n")
+
+
+        result = compare_strings(output, reference)
+        print(result)
+
+        # Standard unit test case with an associated error message
+        if(self.assertTrue(output == reference, msg="")):
+            print("\nFAILED!!")
+        else:
+            print("\nPASSED!!")
+
+        cat.terminate()
+        ref.terminate()
+
+    # Associated point value within GradeScope
+    @weight(0)
+    def test18(self):
+        #Title used by Gradescope 
         """HW2C - Compilation Test"""
 
         # Create a subprocess to run the students make file to ensure it compiles 
@@ -624,7 +662,7 @@ class TestDiff(unittest.TestCase):
     
     # Associated point value within GradeScope
     @weight(1)
-    def test18(self):
+    def test19(self):
         #Title used by Gradescope 
         """HW2C - Invalid Input"""
 
@@ -661,7 +699,7 @@ class TestDiff(unittest.TestCase):
 
     # Associated point value within GradeScope
     @weight(1)
-    def test19(self):
+    def test20(self):
         #Title used by Gradescope 
         """HW2C - Exit"""
 
@@ -696,7 +734,7 @@ class TestDiff(unittest.TestCase):
 
     # Associated point value within GradeScope
     @weight(0)
-    def test20(self):
+    def test21(self):
         #Title used by Gradescope 
         """HW2C - Testcase - 1"""
 
@@ -725,7 +763,7 @@ class TestDiff(unittest.TestCase):
     
     # Associated point value within GradeScope
     @weight(0)
-    def test21(self):
+    def test22(self):
         #Title used by Gradescope 
         """HW2C - Testcase - 2"""
 
@@ -754,7 +792,7 @@ class TestDiff(unittest.TestCase):
     
     # Associated point value within GradeScope
     @weight(0)
-    def test22(self):
+    def test23(self):
         #Title used by Gradescope 
         """HW2C - Testcase - 3"""
 
