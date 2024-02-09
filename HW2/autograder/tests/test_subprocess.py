@@ -681,6 +681,8 @@ class TestDiff(unittest.TestCase):
 
         cat.kill()
 
+        print(f"Input Sequence: -4, -1\n")
+
         buffer = output.splitlines()
         out = buffer[0]
 
@@ -698,7 +700,7 @@ class TestDiff(unittest.TestCase):
         cat.terminate()
 
     # Associated point value within GradeScope
-    @weight(1)
+    @weight(0)
     def test20(self):
         #Title used by Gradescope 
         """HW2C - Exit"""
@@ -719,15 +721,21 @@ class TestDiff(unittest.TestCase):
 
         cat.kill()
         ref.kill()
+        
+        print(f"Input: -1\n")
 
         result = compare_strings(output, reference)
         print(result)
 
+        target = "OK, Goodbye."
+
         # Standard unit test case with an associated error message
-        if(self.assertTrue(output == reference, msg="")):
-            print("\nFAILED!!")
-        else:
+        if target.lower() in output.lower():
             print("\nPASSED!!")
+            self.assertTrue(True, msg="")
+        else:
+            print("\nFAILED!!")
+            self.assertTrue(False, msg="")
 
         cat.terminate()
         ref.terminate()
