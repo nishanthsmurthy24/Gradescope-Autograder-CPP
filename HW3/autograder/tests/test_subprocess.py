@@ -228,7 +228,7 @@ class TestDiff(unittest.TestCase):
         num_lines = len(output.splitlines())
 
         # Standard unit test case with an associated error message
-        if num_lines > 14:
+        if num_lines > 11:
             print("\nNumber of iterations exceeded!!")
             self.assertTrue(False, msg="")
         if output != "Timeout expired!!":
@@ -262,7 +262,7 @@ class TestDiff(unittest.TestCase):
         num_lines = len(output.splitlines())
 
         # Standard unit test case with an associated error message
-        if num_lines > 24:
+        if num_lines > 21:
             print("\nNumber of iterations exceeded!!")
             self.assertTrue(False, msg="")
         if output != "Timeout expired!!":
@@ -333,7 +333,7 @@ class TestDiff(unittest.TestCase):
 
         print(f"Initial Vaue: 200\nNo. of Iterations: 10\nUpdate Size: 0\n")
 
-        result = compare_strings(output, reference, 13)
+        result = compare_strings(output, reference, 10)
         print(result)
 
         # Standard unit test case with an associated error message
