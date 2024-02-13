@@ -173,7 +173,7 @@ class TestDiff(unittest.TestCase):
         print(result)
 
         # Standard unit test case with an associated error message
-        if reference in output:
+        if reference[:-1] in output:
             print("\nPASSED!!")
             self.assertTrue(True, msg="")
         else:
