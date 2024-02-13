@@ -289,13 +289,15 @@ class TestDiff(unittest.TestCase):
             cat.kill()
             output = "Timeout expired!! Program did not exit."
 
-        reference = subprocess.check_output(["head", "-n", "4", "/autograder/source/reference/refB3.txt"]).decode('utf-8').strip()
+        end_index = output.find("Value at iteration # 1 is")
+        output = output[:end_index]
 
+        reference = "Please enter an initial integer value in the range [0,255]: Value must be between 0 and 255. Please enter an initial value in the range [0,255]: Value must be between 0 and 255. Please enter an initial value in the range [0,255]: Value must be between 0 and 255. Please enter an initial value in the range [0,255]: Please enter the desired number of iterations: Please enter the size of each possible update for each iteration: "
         cat.kill()
 
         print(f"Input Sequence: 260, 256, -9\n")
 
-        result = compare_strings(output, reference, 4)
+        result = compare_strings(output, reference, 1)
         print(result)
 
         # Standard unit test case with an associated error message
