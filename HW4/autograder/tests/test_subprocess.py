@@ -101,7 +101,7 @@ class TestDiff(unittest.TestCase):
         # Read the contents of statistics.csv and ref.csv
         if file_generated:
             statistics_content = read_file_contents(file_path)
-            reference_content = read_file_contents("/autograder/source/reference/ref.csv")
+            reference_content = read_file_contents("/autograder/source/reference/refStats.csv")
 
             # Compare the contents
             result = compare_strings(statistics_content, reference_content, 6)
@@ -109,14 +109,14 @@ class TestDiff(unittest.TestCase):
 
             # Standard unit test case with an associated error message
             if statistics_content == reference_content:
-                print("\nPASSED!! Contents of statistics.csv are correct.")
+                print("\nPASSED!! Contents of 'statistics.csv' are correct.")
                 self.assertTrue(True, msg="")
             else:
-                print("\nFAILED!! Contents of statistics.csv are incorrect.")
+                print("\nFAILED!! Contents of 'statistics.csv' are incorrect.")
                 self.assertTrue(False, msg="")
         else:
             # Print a message if statistics.csv is not generated
-            print(f"\nFAILED!! Statistics file '{file_path}' could not be found.")
+            print(f"\nFAILED!! Statistics file 'statistics.csv' could not be found.")
             self.assertTrue(False, msg="")
         
     # Associated point value within GradeScope
@@ -164,10 +164,73 @@ class TestDiff(unittest.TestCase):
             self.assertTrue( output == "", msg=output)
         else:
             print("COMPILATION SUCCESSFUL!!")
+            # Check if "statistics.csv" file is generated
+            file_path = "/autograder/source/statistics.csv"
+            with open(file_path, 'w') as file:
+                file.write("Grade,NumStudents\nA,6\nB,9\nC,4\nD,2\nF,1")
             print(f"\nInput File - statistics.csv\n")
-            print(f"Grade,NumStudents\nA,7\nB,12\nC,5\nD,3\nF,2")
+            print(f"Grade,NumStudents\nA,6\nB,9\nC,4\nD,2\nF,1")
 
         test.terminate()
+    
+    # Associated point value within GradeScope
+    @weight(1)
+    def test06(self):
+        # Title used by Gradescope 
+        """HW4B - Output File - 'histogram.txt' """
+
+        try:
+            # Run the program and capture the output
+            test = subprocess.run(["./HW4B"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=5)
+            output = test.stdout.strip()
+        except subprocess.TimeoutExpired:
+            output = "Timeout expired!! Program did not exit."
+
+        # Check if "histogram.txt" file is generated
+        file_path = "/autograder/source/histogram.txt"
+        file_generated = os.path.isfile(file_path)
+
+        # Standard unit test case with an associated error message
+        if file_generated:
+            print("PASSED!! Found output File 'histogram.txt'")
+            self.assertTrue(True, msg="")
+        else:
+            print("FAILED!! Could not Find output File 'histogram.txt'")
+            self.assertTrue(False, msg="")
+    
+    # Associated point value within GradeScope
+    @weight(0)
+    def test07(self):
+        # Title used by Gradescope 
+        """HW4B - Contents of 'histogram.txt' """
+
+        try:
+            # Run the program and capture the output
+            test = subprocess.run(["./HW4B"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=5)
+            output = test.stdout.strip()
+        except subprocess.TimeoutExpired:
+            output = "Timeout expired!! Program did not exit."
+
+        # Check if "histogram.txt" file is generated
+        file_path = "/autograder/source/histogram.txt"
+        file_generated = os.path.isfile(file_path)
+
+        # Read the contents of histogram.txt and ref.txt
+        if file_generated:
+            statistics_content = read_file_contents(file_path)
+            reference_content = read_file_contents("/autograder/source/reference/refHisto.txt")
+
+            # Compare the contents
+            # result = compare_strings(statistics_content, reference_content, 6)
+            print(f"Expected Output:\n{reference_content}")
+            print(f"\nYour Output:\n{statistics_content}")
+
+            self.assertTrue(True, msg="")
+            
+        else:
+            # Print a message if statistics.csv is not generated
+            print(f"\nFAILED!! Statistics file 'histogram.txt' could not be found.")
+            self.assertTrue(False, msg="")
 
     # Associated point value within GradeScope
     @weight(0)
