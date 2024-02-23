@@ -17,19 +17,19 @@ def copy_files(src_path, dest_path):
     # Flag to check if any files were copied
     files_copied = False
 
-    # Loop through the files and copy those ending with "_hw3A.cpp", "_hw3B.cpp" and "_hw3C.cpp"
+    # Loop through the files and copy those ending with "hw3A.cpp", "hw3B.cpp" and "hw3C.cpp"
     for file_name in files:
-        if file_name.lower().endswith("_hw3a.cpp"):
+        if file_name.lower().endswith("hw3a.cpp"):
             src_file_path = os.path.join(src_path, file_name)
             dest_file_path = os.path.join(dest_path, "HW3A.cpp")
             shutil.copy(src_file_path, dest_file_path)
             files_copied = True
-        if file_name.lower().endswith("_hw3b.cpp"):
+        if file_name.lower().endswith("hw3b.cpp"):
             src_file_path = os.path.join(src_path, file_name)
             dest_file_path = os.path.join(dest_path, "HW3B.cpp")
             shutil.copy(src_file_path, dest_file_path)
             files_copied = True
-        if file_name.lower().endswith("_hw3c.cpp"):
+        if file_name.lower().endswith("hw3c.cpp"):
             src_file_path = os.path.join(src_path, file_name)
             dest_file_path = os.path.join(dest_path, "HW3C.cpp")
             shutil.copy(src_file_path, dest_file_path)
@@ -37,7 +37,7 @@ def copy_files(src_path, dest_path):
 
     # Check if no files were copied
     if not files_copied:
-        print("Error: No files ending with '_hw3A.cpp' or '_hw3B.cpp' or '_hw3C.cpp' found in the source path.")
+        print("Error: No files ending with 'hw3A.cpp' or 'hw3B.cpp' or 'hw3C.cpp' found in the source path.")
         return
 
 if __name__ == "__main__":
