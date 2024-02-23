@@ -107,9 +107,6 @@ class TestDiff(unittest.TestCase):
             result = compare_strings(statistics_content, reference_content, 6)
             print(result)
 
-            print(statistics_content)
-            print(reference_content)
-
             # Standard unit test case with an associated error message
             if statistics_content in reference_content:
                 print("\nPASSED!! Contents of 'statistics.csv' are correct.")
