@@ -51,7 +51,7 @@ class TestDiff(unittest.TestCase):
         test.terminate()
 
     # Associated point value within GradeScope
-    @weight(1)
+    @weight(0)
     def test01(self):
         #Title used by Gradescope 
         """HW5B - Compilation Test"""
@@ -107,7 +107,7 @@ class TestDiff(unittest.TestCase):
         ref.terminate()
 
     # Associated point value within GradeScope
-    @weight(0.5)
+    @weight(1)
     def test03(self):
         #Title used by Gradescope 
         """HW5B - Invalid Input & Exit"""
@@ -257,11 +257,11 @@ class TestDiff(unittest.TestCase):
         # Title used by Gradescope 
         """HW5B - Testcase 3"""
 
-        print(f"Running program\n\n$ ./HW5B 4 4 4\n")
+        print(f"Running program\n\n$ ./HW5B 6 3 9\n")
 
         try:
             # Run the program and capture the output
-            test = subprocess.run(["./HW5B", "4", "4", "4"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=5)
+            test = subprocess.run(["./HW5B", "6", "3", "9"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=5)
             output = test.stdout.strip()
         except subprocess.TimeoutExpired:
             output = "Timeout expired!! Program did not exit."
@@ -276,10 +276,10 @@ class TestDiff(unittest.TestCase):
         if file_generated:
             rand_content = read_file_contents(file_path)
 
-            print(f"Your Output: \n{rand_content}")
+            print(f"Your Output:\n{rand_content}")
 
             # Standard unit test case with an associated error message
-            if rand_out == "4 4":
+            if rand_out == "6 3":
                 print("PASSED!!")
                 self.assertTrue(True, msg="")
             else:
