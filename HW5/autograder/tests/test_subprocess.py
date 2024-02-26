@@ -358,3 +358,165 @@ class TestDiff(unittest.TestCase):
             print("COMPILATION SUCCESSFUL!!")
         
         test.terminate()
+
+    # Associated point value within GradeScope
+    @weight(1)
+    def test10(self):
+        #Title used by Gradescope 
+        """HW5C - Invalid Input & Exit"""
+        
+        print(f"Running program\n\n$ ./HW5C\n")
+
+        # Use subprocess.run to execute the command with a timeout
+        try:
+            test = subprocess.run(["./HW5C"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=5)
+            output = test.stdout.strip()
+        except subprocess.TimeoutExpired:
+            output = "Timeout expired!! Program did not exit."
+
+        ref = subprocess.Popen(["cat", "/autograder/source/reference/refC.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        reference = ref.stdout.read().strip().decode('utf-8')
+
+        ref.kill()
+
+        result = compare_strings(output, reference, 2)
+        print(result)
+
+        # Standard unit test case with an associated error message
+        if reference[:-2] in output:
+            print("\nPASSED!!")
+            self.assertTrue(True, msg="")
+        else:
+            print("\nFAILED!!")
+            self.assertTrue(False, msg="")
+
+        ref.terminate()
+
+    # Associated point value within GradeScope
+    @weight(2)
+    def test11(self):
+        #Title used by Gradescope 
+        """HW5C - Testcase 1"""
+
+        array = "4 4\n6 8 8 5\n5 5 -5 9\n7 8 9 0\n5 6 -3 5\n"
+
+        print(f"Input File - randTest1.txt\n\n{array}")
+
+        file_path = "/autograder/source/randTest1.txt"
+        with open(file_path, 'w') as file:
+            file.write(array)
+        
+        print(f"Running program\n$ ./HW5C randTest1.txt\n")
+        
+        output = ""
+        out_file = "avgTest1.txt"
+        # Use subprocess.run to execute the command with a timeout
+        try:
+            with open(out_file, 'w') as out_file:
+                test = subprocess.run(["./HW5C", "randTest1.txt"], stdin=subprocess.PIPE, stdout=out_file, stderr=subprocess.PIPE, text=True, timeout=5)
+        except subprocess.TimeoutExpired:
+            output = "Timeout expired!! Program did not exit."
+
+        rand_content = read_file_contents("/autograder/source/avgTest1.txt")
+        reference_content = read_file_contents("/autograder/source/reference/refC1.txt")
+
+        # Compare the contents
+        print(f"Expected Output:\n{reference_content}")
+        print(f"Your Output:\n{rand_content}")
+
+        # Standard unit test case with an associated error message
+        if output == "Timeout expired!! Program did not exit.":
+            print("FAILED!! Timeout Error.")
+            self.assertTrue(False, msg="")
+        elif rand_content in reference_content:
+            print("PASSED!! Pixel Averaging algorithm is correct.")
+            self.assertTrue(True, msg="")
+        else:
+            print("FAILED!! Pixel Averaging algorithm is incorrect.")
+            self.assertTrue(False, msg="")
+
+    # Associated point value within GradeScope
+    @weight(2)
+    def test12(self):
+        #Title used by Gradescope 
+        """HW5C - Testcase 2"""
+
+        array = "1 5\n2 4 -4 1 -1\n"
+
+        print(f"Input File - randTest2.txt\n\n{array}")
+
+        file_path = "/autograder/source/randTest2.txt"
+        with open(file_path, 'w') as file:
+            file.write(array)
+        
+        print(f"Running program\n$ ./HW5C randTest2.txt\n")
+        
+        output = ""
+        out_file = "avgTest2.txt"
+        # Use subprocess.run to execute the command with a timeout
+        try:
+            with open(out_file, 'w') as out_file:
+                test = subprocess.run(["./HW5C", "randTest2.txt"], stdin=subprocess.PIPE, stdout=out_file, stderr=subprocess.PIPE, text=True, timeout=5)
+        except subprocess.TimeoutExpired:
+            output = "Timeout expired!! Program did not exit."
+
+        rand_content = read_file_contents("/autograder/source/avgTest2.txt")
+        reference_content = read_file_contents("/autograder/source/reference/refC2.txt")
+
+        # Compare the contents
+        print(f"Expected Output:\n{reference_content}")
+        print(f"Your Output:\n{rand_content}")
+
+        # Standard unit test case with an associated error message
+        if output == "Timeout expired!! Program did not exit.":
+            print("FAILED!! Timeout Error.")
+            self.assertTrue(False, msg="")
+        elif rand_content in reference_content:
+            print("PASSED!! Pixel Averaging algorithm is correct.")
+            self.assertTrue(True, msg="")
+        else:
+            print("FAILED!! Pixel Averaging algorithm is incorrect.")
+            self.assertTrue(False, msg="")
+    
+    # Associated point value within GradeScope
+    @weight(2)
+    def test13(self):
+        #Title used by Gradescope 
+        """HW5C - Testcase 3"""
+
+        array = "5 1\n3\n-5\n6\n-3\n1\n"
+
+        print(f"Input File - randTest3.txt\n\n{array}")
+
+        file_path = "/autograder/source/randTest3.txt"
+        with open(file_path, 'w') as file:
+            file.write(array)
+        
+        print(f"Running program\n$ ./HW5C randTest3.txt\n")
+        
+        output = ""
+        out_file = "avgTest3.txt"
+        # Use subprocess.run to execute the command with a timeout
+        try:
+            with open(out_file, 'w') as out_file:
+                test = subprocess.run(["./HW5C", "randTest3.txt"], stdin=subprocess.PIPE, stdout=out_file, stderr=subprocess.PIPE, text=True, timeout=5)
+        except subprocess.TimeoutExpired:
+            output = "Timeout expired!! Program did not exit."
+
+        rand_content = read_file_contents("/autograder/source/avgTest3.txt")
+        reference_content = read_file_contents("/autograder/source/reference/refC3.txt")
+
+        # Compare the contents
+        print(f"Expected Output:\n{reference_content}")
+        print(f"Your Output:\n{rand_content}")
+
+        # Standard unit test case with an associated error message
+        if output == "Timeout expired!! Program did not exit.":
+            print("FAILED!! Timeout Error.")
+            self.assertTrue(False, msg="")
+        elif rand_content in reference_content:
+            print("PASSED!! Pixel Averaging algorithm is correct.")
+            self.assertTrue(True, msg="")
+        else:
+            print("FAILED!! Pixel Averaging algorithm is incorrect.")
+            self.assertTrue(False, msg="")
