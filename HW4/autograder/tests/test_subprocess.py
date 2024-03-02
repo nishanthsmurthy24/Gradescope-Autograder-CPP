@@ -75,10 +75,10 @@ class TestDiff(unittest.TestCase):
 
         # Standard unit test case with an associated error message
         if file_generated:
-            print("PASSED!! Found output File 'statistcs.csv'")
+            print("PASSED!! Found output File 'statistics.csv'")
             self.assertTrue(True, msg="")
         else:
-            print("FAILED!! Could not Find output File 'statistcs.csv'")
+            print("FAILED!! Could not Find output File 'statistics.csv'")
             self.assertTrue(False, msg="")
     
     # Associated point value within GradeScope
