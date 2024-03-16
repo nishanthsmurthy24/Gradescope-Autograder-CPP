@@ -77,7 +77,7 @@ class TestDiff(unittest.TestCase):
     @weight(1)
     def test02(self):
         #Title used by Gradescope 
-        """HW5B - Invalid Input & Exit"""
+        """HW5B - Invalid Number of Arguments & Exit"""
 
         print(f"Running program\n\n$ ./HW5B\n")
         
@@ -110,7 +110,7 @@ class TestDiff(unittest.TestCase):
     @weight(1)
     def test03(self):
         #Title used by Gradescope 
-        """HW5B - Invalid Input & Exit"""
+        """HW5B - Invalid Number of Arguments & Exit"""
         
         print(f"Running program\n\n$ ./HW5B 4 4\n")
 
@@ -363,7 +363,7 @@ class TestDiff(unittest.TestCase):
     @weight(1)
     def test10(self):
         #Title used by Gradescope 
-        """HW5C - Invalid Input & Exit"""
+        """HW5C - Invalid Number of Arguments & Exit"""
         
         print(f"Running program\n\n$ ./HW5C\n")
 
