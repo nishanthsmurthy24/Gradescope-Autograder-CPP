@@ -271,13 +271,15 @@ class TestDiff(unittest.TestCase):
             print("Nullam volutpat tristique erat, ac aliquam nunc gravida vitae. Nunc ut libero gravida, rhoncus sapien ornare, molestie massa. Proin id dignissim nulla. Suspendisse euismod posuere lacus convallis suscipit.")
             print("Sed dapibus elit arcu, sit amet posuere ex tincidunt nec. Nunc vel purus massa. Nullam scelerisque quam sed lacus finibus cursus. Ut tincidunt turpis eleifend finibus lobortis. Mauris aliquet finibus bibendum.")
         
+        os.mkdir("/autograder/source/output_files")
+        
         test.terminate()
 
     # Associated point value within GradeScope
     @weight(2)
     def test09(self):
         # Title used by Gradescope 
-        """HW4A - Output File - 'election_results.txt' """
+        """HW4C - Output File - 'election_results.txt' """
 
         try:
             # Run the program and capture the output
