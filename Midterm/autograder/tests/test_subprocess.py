@@ -32,7 +32,7 @@ class TestDiff(unittest.TestCase):
     @weight(0)
     def test00(self):
         #Title used by Gradescope 
-        """Midterm - Compilation Test"""
+        """Compilation Test"""
 
         # Create a subprocess to run the students make file to ensure it compiles 
         test = subprocess.Popen(["make", "midterm"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -52,10 +52,10 @@ class TestDiff(unittest.TestCase):
         test.terminate()
     
     # Associated point value within GradeScope
-    @weight(0)
+    @weight(5)
     def test01(self):
         # Title used by Gradescope 
-        """Midterm - Output File - 'power12.txt' """
+        """Output File - 'power12.txt' """
 
         try:
             # Run the program and capture the output
@@ -82,7 +82,7 @@ class TestDiff(unittest.TestCase):
     @weight(0)
     def test02(self):
         # Title used by Gradescope 
-        """Midterm - Contents of 'power12.txt' """
+        """Testcase 1 - Contents of 'power12.txt' """
 
         try:
             # Run the program and capture the output
@@ -99,7 +99,7 @@ class TestDiff(unittest.TestCase):
         # Read the contents of power12.txt and ref.txt
         if file_generated:
             file_content = read_file_contents(file_path)
-            reference_content = read_file_contents("/autograder/source/reference/ref.txt")
+            reference_content = read_file_contents("/autograder/source/reference/ref1.txt")
 
             # Compare the contents
             result = compare_strings(file_content, reference_content, 3)
@@ -117,27 +117,129 @@ class TestDiff(unittest.TestCase):
             # Print a message if power12.txt is not generated
             print(f"\nFAILED!! Ouput file 'power12.txt' could not be found.")
             self.assertTrue(False, msg="")
-        
+    
     # Associated point value within GradeScope
     @weight(0)
     def test03(self):
-        #Title used by Gradescope 
-        """Midterm - Terminal Output (I/O Formatting)"""
+        # Title used by Gradescope 
+        """Testcase 1 - Output' """
 
         try:
+            # Run the program and capture the output
             cat = subprocess.Popen(["cat", "/autograder/source/input/in1.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             test = subprocess.run(["./midterm_exe"], stdin=cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=5)
             output = test.stdout.strip()
         except subprocess.TimeoutExpired:
             output = "Timeout expired!! Program did not exit."
 
-        reference = subprocess.check_output(["head", "-n", "6", "/autograder/source/reference/out.txt"]).decode('utf-8').strip()
+        file_path = "/autograder/source/power12.txt"
 
-        result = compare_strings(output, reference, 6)
+        # Read the contents of power12.txt and ref.txt
+        reference_out = read_file_contents("/autograder/source/reference/out1.txt")
+
+        # Compare the contents
+        result = compare_strings(output, reference_out, 6)
         print(result)
+
+        # Standard unit test case with an associated error message
+        if output in reference_out:
+            print("\nPASSED!! cout statements are correct.")
+            os.remove(file_path)
+            self.assertTrue(True, msg="")
+        else:
+            print("\nFAILED!! cout statements are incorrect.")
+            self.assertTrue(False, msg="")
+
+    # Associated point value within GradeScope
+    @weight(0)
+    def test04(self):
+        # Title used by Gradescope 
+        """Testcase 2 - Contents of 'power12.txt' """
+
+        try:
+            # Run the program and capture the output
+            cat = subprocess.Popen(["cat", "/autograder/source/input/in2.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            test = subprocess.run(["./midterm_exe"], stdin=cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=5)
+            output = test.stdout.strip()
+        except subprocess.TimeoutExpired:
+            output = "Timeout expired!! Program did not exit."
 
         # Check if "power12.txt" file is generated
         file_path = "/autograder/source/power12.txt"
+        file_generated = os.path.isfile(file_path)
+
+        # Read the contents of power12.txt and ref.txt
+        if file_generated:
+            file_content = read_file_contents(file_path)
+            reference_content = read_file_contents("/autograder/source/reference/ref2.txt")
+
+            # Compare the contents
+            result = compare_strings(file_content, reference_content, 5)
+            print(result)
+
+            # Standard unit test case with an associated error message
+            if file_content == reference_content:
+                print("\nPASSED!! Contents of 'power12.txt' are correct.")
+                os.remove(file_path)
+                self.assertTrue(True, msg="")
+            else:
+                print("\nFAILED!! Contents of 'power12.txt' are incorrect.")
+                self.assertTrue(False, msg="")
+        else:
+            # Print a message if power12.txt is not generated
+            print(f"\nFAILED!! Ouput file 'power12.txt' could not be found.")
+            self.assertTrue(False, msg="")
+
+    # Associated point value within GradeScope
+    @weight(0)
+    def test05(self):
+        # Title used by Gradescope 
+        """Testcase 2 - Output' """
+
+        try:
+            # Run the program and capture the output
+            cat = subprocess.Popen(["cat", "/autograder/source/input/in2.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            test = subprocess.run(["./midterm_exe"], stdin=cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=5)
+            output = test.stdout.strip()
+        except subprocess.TimeoutExpired:
+            output = "Timeout expired!! Program did not exit."
+
+        file_path = "/autograder/source/power12.txt"
+
+        # Read the contents of power12.txt and ref.txt
+        reference_out = read_file_contents("/autograder/source/reference/out2.txt")
+
+        # Compare the contents
+        result = compare_strings(output, reference_out, 8)
+        print(result)
+
+        # Standard unit test case with an associated error message
+        if output in reference_out:
+            print("\nPASSED!! cout statements are correct.")
+            os.remove(file_path)
+            self.assertTrue(True, msg="")
+        else:
+            print("\nFAILED!! cout statements are incorrect.")
+            self.assertTrue(False, msg="")
+
+    
+    # Associated point value within GradeScope
+    @weight(0)
+    def test06(self):
+        #Title used by Gradescope 
+        """Terminal Output (I/O Formatting)"""
+
+        try:
+            cat = subprocess.Popen(["cat", "/autograder/source/input/in3.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            test = subprocess.run(["./midterm_exe"], stdin=cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=5)
+            output = test.stdout.strip()
+        except subprocess.TimeoutExpired:
+            output = "Timeout expired!! Program did not exit."
+
+        reference = subprocess.check_output(["head", "-n", "1", "/autograder/source/reference/out3.txt"]).decode('utf-8').strip()
+
+        result = compare_strings(output, reference, 1)
+        print(result)
 
         # Standard unit test case with an associated error message
         if reference == output:
@@ -147,7 +249,5 @@ class TestDiff(unittest.TestCase):
             print("\nFAILED!!")
             self.assertTrue(False, msg="")
         
+        file_path = "/autograder/source/power12.txt"
         os.remove(file_path)
-
-
-   
