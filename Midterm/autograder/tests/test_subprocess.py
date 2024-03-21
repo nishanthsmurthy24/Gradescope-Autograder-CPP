@@ -69,6 +69,8 @@ class TestDiff(unittest.TestCase):
         file_path = "/autograder/source/power12.txt"
         file_generated = os.path.isfile(file_path)
 
+        cat.kill()
+
         # Standard unit test case with an associated error message
         if file_generated:
             print("PASSED!! Found output File 'power12.txt'")
@@ -77,6 +79,8 @@ class TestDiff(unittest.TestCase):
         else:
             print("FAILED!! Could not Find output File 'power12.txt'")
             self.assertTrue(False, msg="")
+
+        cat.terminate()
     
     # Associated point value within GradeScope
     @weight(0)
@@ -95,6 +99,8 @@ class TestDiff(unittest.TestCase):
         # Check if "power12.txt" file is generated
         file_path = "/autograder/source/power12.txt"
         file_generated = os.path.isfile(file_path)
+
+        cat.kill()
 
         # Read the contents of power12.txt and ref.txt
         if file_generated:
@@ -117,6 +123,9 @@ class TestDiff(unittest.TestCase):
             # Print a message if power12.txt is not generated
             print(f"\nFAILED!! Ouput file 'power12.txt' could not be found.")
             self.assertTrue(False, msg="")
+        
+        cat.terminate()
+
     
     # Associated point value within GradeScope
     @weight(0)
@@ -137,6 +146,8 @@ class TestDiff(unittest.TestCase):
         # Read the contents of power12.txt and ref.txt
         reference_out = read_file_contents("/autograder/source/reference/out1.txt")
 
+        cat.kill()
+
         # Compare the contents
         result = compare_strings(output, reference_out, 6)
         print(result)
@@ -149,6 +160,8 @@ class TestDiff(unittest.TestCase):
         else:
             print("\nFAILED!! cout statements are incorrect.")
             self.assertTrue(False, msg="")
+
+        cat.terminate()
 
     # Associated point value within GradeScope
     @weight(0)
@@ -167,6 +180,8 @@ class TestDiff(unittest.TestCase):
         # Check if "power12.txt" file is generated
         file_path = "/autograder/source/power12.txt"
         file_generated = os.path.isfile(file_path)
+
+        cat.kill()
 
         # Read the contents of power12.txt and ref.txt
         if file_generated:
@@ -190,6 +205,8 @@ class TestDiff(unittest.TestCase):
             print(f"\nFAILED!! Ouput file 'power12.txt' could not be found.")
             self.assertTrue(False, msg="")
 
+        cat.terminate()
+
     # Associated point value within GradeScope
     @weight(0)
     def test05(self):
@@ -209,6 +226,8 @@ class TestDiff(unittest.TestCase):
         # Read the contents of power12.txt and ref.txt
         reference_out = read_file_contents("/autograder/source/reference/out2.txt")
 
+        cat.kill()
+
         # Compare the contents
         result = compare_strings(output, reference_out, 8)
         print(result)
@@ -222,6 +241,7 @@ class TestDiff(unittest.TestCase):
             print("\nFAILED!! cout statements are incorrect.")
             self.assertTrue(False, msg="")
 
+        cat.terminate()
     
     # Associated point value within GradeScope
     @weight(0)
@@ -238,6 +258,8 @@ class TestDiff(unittest.TestCase):
 
         reference = subprocess.check_output(["head", "-n", "1", "/autograder/source/reference/out3.txt"]).decode('utf-8').strip()
 
+        cat.kill()
+
         result = compare_strings(output, reference, 1)
         print(result)
 
@@ -251,3 +273,5 @@ class TestDiff(unittest.TestCase):
         
         file_path = "/autograder/source/power12.txt"
         os.remove(file_path)
+
+        cat.terminate()
