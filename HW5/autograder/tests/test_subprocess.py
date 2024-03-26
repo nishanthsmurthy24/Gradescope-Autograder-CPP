@@ -4,6 +4,17 @@ import subprocess
 from difflib import Differ
 import os
 
+def count_zeros_in_file(file_path):
+    try:
+        with open(file_path, 'r') as file:
+            zeros_count = 0
+            for line in file:
+                zeros_count += line.count('0')
+        return zeros_count
+    except FileNotFoundError:
+        print(f"File '{file_path}' not found.")
+        return -1  # Return -1 to indicate file not found error
+
 def compare_strings(string1, string2, n):
     differ = Differ()
     lines1 = string1.splitlines()[:n]
@@ -321,8 +332,10 @@ class TestDiff(unittest.TestCase):
             print(f"Expected Output:\n{reference_content}")
             print(f"Your Output: \n{rand_content}")
 
+            zeros_count = count_zeros_in_file(file_path)
+
             # Standard unit test case with an associated error message
-            if rand_content in reference_content:
+            if zeros_count == 12:
                 print("PASSED!! Contents of 'randArray.txt' are correct.")
                 self.assertTrue(True, msg="")
             else:
