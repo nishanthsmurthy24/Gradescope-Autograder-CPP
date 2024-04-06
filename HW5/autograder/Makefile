@@ -6,3 +6,6 @@ b: HW5B.cpp
 
 c: HW5C.cpp
 	g++ -Wall HW5C.cpp -o HW5C
+
+clean:
+	rm maze.txt
