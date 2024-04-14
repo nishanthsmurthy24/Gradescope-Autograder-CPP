@@ -53,23 +53,27 @@ class TestDiff(unittest.TestCase):
         except subprocess.TimeoutExpired:
             output = "Timeout expired!! Program did not exit."
 
-        ref = subprocess.Popen(["cat", "/autograder/source/reference/ref1.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        reference = ref.stdout.read().strip().decode('utf-8')
+        reference = subprocess.check_output(["tail", "-n", "1", "/autograder/source/reference/ref1.txt"]).decode('utf-8').strip()
 
         cat.kill()
-        ref.kill()
 
-        result = compare_strings(output, reference, 5)
-        print(result)
+        print(f"(3) + (2)x^1 + (1)x^2")
+        print(f"times")
+        print(f"(2) + (2)x^1 + (2)x^2")
+
+        # Compare the contents
+        print(f"\nExpected Output:\n{reference}\n")
+        print(f"Your Output:\n{output.splitlines()[-1]}")
 
         # Standard unit test case with an associated error message
-        if(self.assertTrue(output == reference, msg="")):
-            print("\nFAILED!!")
-        else:
+        if reference in output.splitlines()[-1]:
             print("\nPASSED!!")
+            self.assertTrue(True, msg="")
+        else:
+            print("\nFAILED!!")
+            self.assertTrue(False, msg="")
 
         cat.terminate()
-        ref.terminate()
 
     # Associated point value within GradeScope
     @weight(1)
@@ -85,23 +89,27 @@ class TestDiff(unittest.TestCase):
         except subprocess.TimeoutExpired:
             output = "Timeout expired!! Program did not exit."
 
-        ref = subprocess.Popen(["cat", "/autograder/source/reference/ref2.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        reference = ref.stdout.read().strip().decode('utf-8')
+        reference = subprocess.check_output(["tail", "-n", "1", "/autograder/source/reference/ref2.txt"]).decode('utf-8').strip()
 
         cat.kill()
-        ref.kill()
 
-        result = compare_strings(output, reference, 5)
-        print(result)
+        print(f"(1) + (-2)x^1 + (3)x^2")
+        print(f"times")
+        print(f"(3) + (-2)x^1 + (-1)x^2")
+
+        # Compare the contents
+        print(f"\nExpected Output:\n{reference}\n")
+        print(f"Your Output:\n{output.splitlines()[-1]}")
 
         # Standard unit test case with an associated error message
-        if(self.assertTrue(output == reference, msg="")):
-            print("\nFAILED!!")
-        else:
+        if reference in output.splitlines()[-1]:
             print("\nPASSED!!")
+            self.assertTrue(True, msg="")
+        else:
+            print("\nFAILED!!")
+            self.assertTrue(False, msg="")
 
         cat.terminate()
-        ref.terminate()
 
     # Associated point value within GradeScope
     @weight(1)
@@ -117,23 +125,27 @@ class TestDiff(unittest.TestCase):
         except subprocess.TimeoutExpired:
             output = "Timeout expired!! Program did not exit."
 
-        ref = subprocess.Popen(["cat", "/autograder/source/reference/ref3.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        reference = ref.stdout.read().strip().decode('utf-8')
+        reference = subprocess.check_output(["tail", "-n", "1", "/autograder/source/reference/ref3.txt"]).decode('utf-8').strip()
 
         cat.kill()
-        ref.kill()
 
-        result = compare_strings(output, reference, 5)
-        print(result)
+        print(f"(-1) + (2)x^1")
+        print(f"times")
+        print(f"(1) + (3)x^1 + (-4)x^2")
+
+        # Compare the contents
+        print(f"\nExpected Output:\n{reference}\n")
+        print(f"Your Output:\n{output.splitlines()[-1]}")
 
         # Standard unit test case with an associated error message
-        if(self.assertTrue(output == reference, msg="")):
-            print("\nFAILED!!")
-        else:
+        if reference in output.splitlines()[-1]:
             print("\nPASSED!!")
+            self.assertTrue(True, msg="")
+        else:
+            print("\nFAILED!!")
+            self.assertTrue(False, msg="")
 
         cat.terminate()
-        ref.terminate()
 
     # Associated point value within GradeScope
     @weight(1)
@@ -149,20 +161,24 @@ class TestDiff(unittest.TestCase):
         except subprocess.TimeoutExpired:
             output = "Timeout expired!! Program did not exit."
 
-        ref = subprocess.Popen(["cat", "/autograder/source/reference/ref4.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        reference = ref.stdout.read().strip().decode('utf-8')
+        reference = subprocess.check_output(["tail", "-n", "1", "/autograder/source/reference/ref4.txt"]).decode('utf-8').strip()
 
         cat.kill()
-        ref.kill()
 
-        result = compare_strings(output, reference, 5)
-        print(result)
+        print(f"(2)")
+        print(f"times")
+        print(f"(5) + (-4)x^1 + (0)x^2 + (-2)x^3 + (1)x^4")
+
+        # Compare the contents
+        print(f"\nExpected Output:\n{reference}\n")
+        print(f"Your Output:\n{output.splitlines()[-1]}")
 
         # Standard unit test case with an associated error message
-        if(self.assertTrue(output == reference, msg="")):
-            print("\nFAILED!!")
-        else:
+        if reference in output.splitlines()[-1]:
             print("\nPASSED!!")
+            self.assertTrue(True, msg="")
+        else:
+            print("\nFAILED!!")
+            self.assertTrue(False, msg="")
 
         cat.terminate()
-        ref.terminate()
