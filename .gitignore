@@ -167,3 +167,4 @@ ref*.txt
 input/
 reference/
 .vscode/settings.json
+submissions/
