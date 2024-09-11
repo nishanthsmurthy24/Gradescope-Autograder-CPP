@@ -51,7 +51,7 @@ class TestDiff(unittest.TestCase):
     @weight(0.5)
     def test01(self):
         #Title used by Gradescope 
-        """HW1A - Tank Volume"""
+        """HW1A - Testcase 1 - Tank Volume"""
 
         # Create a subprocess to run the students code and with our test file 
         cat = subprocess.Popen(["cat", "/autograder/source/input/inA2.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -69,7 +69,7 @@ class TestDiff(unittest.TestCase):
         target = "523.60"
 
         found = find_float(output, "Volume of the entire tank: ")
-        print(f"### Expected ###\nVolume of the entire tank: {target}\n#### Found ####\nVolume of the entire tank: {found}")
+        print(f"Radius of the Sphere: 5\nHeight of the fluid: 4\n\n### Expected ###\nVolume of the entire tank: {target}\n#### Found ####\nVolume of the entire tank: {found}")
 
         # Standard unit test case with an associated error message
         if target in output:
@@ -81,47 +81,12 @@ class TestDiff(unittest.TestCase):
 
         cat.terminate()
         test.terminate()
-    
+
     # Associated point value within GradeScope
     @weight(0.5)
     def test02(self):
         #Title used by Gradescope 
-        """HW1A - Tank Volume"""
-
-        # Create a subprocess to run the students code and with our test file 
-        cat = subprocess.Popen(["cat", "/autograder/source/input/inA3.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        test = subprocess.Popen(["./HW1A"], stdin= cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        try:
-            output, _ = test.communicate(timeout=10)
-            output = output.strip().decode('utf-8')
-        except subprocess.TimeoutExpired:
-            test.kill()
-            output = "Timeout expired!!"
-
-        cat.kill()
-        test.kill()
-
-        target = "12770.05"
-
-        found = find_float(output, "Volume of the entire tank: ")
-        print(f"### Expected ###\nVolume of the entire tank: {target}\n#### Found ####\nVolume of the entire tank: {found}")
-
-        # Standard unit test case with an associated error message
-        if target in output:
-            self.assertTrue(True, msg="")
-        elif "12770.04" in output:
-            self.assertTrue(True, msg="")            
-        else:
-            self.assertTrue(False, msg="")
-
-        cat.terminate()
-        test.terminate()
-
-    # Associated point value within GradeScope
-    @weight(0.5)
-    def test03(self):
-        #Title used by Gradescope 
-        """HW1A - Tank Surface Area"""
+        """HW1A - Testcase 1 - Tank Surface Area"""
 
         # Create a subprocess to run the students code and with our test file 
         cat = subprocess.Popen(["cat", "/autograder/source/input/inA2.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -151,47 +116,12 @@ class TestDiff(unittest.TestCase):
 
         cat.terminate()
         test.terminate()
-
-    # Associated point value within GradeScope
-    @weight(0.5)
-    def test04(self):
-        #Title used by Gradescope 
-        """HW1A - Tank Surface Area"""
-
-        # Create a subprocess to run the students code and with our test file 
-        cat = subprocess.Popen(["cat", "/autograder/source/input/inA3.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        test = subprocess.Popen(["./HW1A"], stdin= cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        try:
-            output, _ = test.communicate(timeout=10)
-            output = output.strip().decode('utf-8')
-        except subprocess.TimeoutExpired:
-            test.kill()
-            output = "Timeout expired!!"
-
-        cat.kill()
-        test.kill()
-
-        target = "2642.08"
-
-        found = find_float(output, "Surface area of the entire tank: ")
-        print(f"### Expected ###\nSurface area of the entire tank: {target}\n#### Found ####\nSurface area of the entire tank: {found}")
-
-        # Standard unit test case with an associated error message
-        if target in output:
-            self.assertTrue(True, msg="")
-        elif "2642.07" in output:
-            self.assertTrue(True, msg="")
-        else:
-            self.assertTrue(False, msg="")
-
-        cat.terminate()
-        test.terminate()
     
     # Associated point value within GradeScope
     @weight(0.5)
-    def test05(self):
+    def test03(self):
         #Title used by Gradescope 
-        """HW1A - Volume Fluid"""
+        """HW1A - Testcase 1 - Volume Fluid"""
 
         # Create a subprocess to run the students code and with our test file 
         cat = subprocess.Popen(["cat", "/autograder/source/input/inA2.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -224,9 +154,114 @@ class TestDiff(unittest.TestCase):
 
     # Associated point value within GradeScope
     @weight(0.5)
+    def test04(self):
+        #Title used by Gradescope 
+        """HW1A - Testcase 1 - Surface Area Fluid"""
+
+        # Create a subprocess to run the students code and with our test file 
+        cat = subprocess.Popen(["cat", "/autograder/source/input/inA2.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        test = subprocess.Popen(["./HW1A"], stdin= cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        try:
+            output, _ = test.communicate(timeout=10)
+            output = output.strip().decode('utf-8')
+        except subprocess.TimeoutExpired:
+            test.kill()
+            output = "Timeout expired!!"
+
+        cat.kill()
+        test.kill()
+
+        target = "125.66"
+
+        found = find_float(output, "Surface area covered by the fluid: ")
+        print(f"### Expected ###\nSurface area covered by the fluid: {target}\n#### Found ####\nSurface area covered by the fluid: {found}")
+
+        # Standard unit test case with an associated error message
+        if target in output:
+            self.assertTrue(True, msg="")
+        else:
+            self.assertTrue(False, msg="")
+
+        cat.terminate()
+        test.terminate()
+    
+
+    # Associated point value within GradeScope
+    @weight(0.5)
+    def test05(self):
+        #Title used by Gradescope 
+        """HW1A - Testcase 2 - Tank Volume"""
+
+        # Create a subprocess to run the students code and with our test file 
+        cat = subprocess.Popen(["cat", "/autograder/source/input/inA3.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        test = subprocess.Popen(["./HW1A"], stdin= cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        try:
+            output, _ = test.communicate(timeout=10)
+            output = output.strip().decode('utf-8')
+        except subprocess.TimeoutExpired:
+            test.kill()
+            output = "Timeout expired!!"
+
+        cat.kill()
+        test.kill()
+
+        target = "12770.05"
+
+        found = find_float(output, "Volume of the entire tank: ")
+        print(f"Radius of the Sphere: 14.5\nHeight of the fluid: 6.25\n\n### Expected ###\nVolume of the entire tank: {target}\n#### Found ####\nVolume of the entire tank: {found}")
+
+        # Standard unit test case with an associated error message
+        if target in output:
+            self.assertTrue(True, msg="")
+        elif "12770.04" in output:
+            self.assertTrue(True, msg="")            
+        else:
+            self.assertTrue(False, msg="")
+
+        cat.terminate()
+        test.terminate()
+
+    # Associated point value within GradeScope
+    @weight(0.5)
     def test06(self):
         #Title used by Gradescope 
-        """HW1A - Volume Fluid"""
+        """HW1A - Testcase 2 - Tank Surface Area"""
+
+        # Create a subprocess to run the students code and with our test file 
+        cat = subprocess.Popen(["cat", "/autograder/source/input/inA3.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        test = subprocess.Popen(["./HW1A"], stdin= cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        try:
+            output, _ = test.communicate(timeout=10)
+            output = output.strip().decode('utf-8')
+        except subprocess.TimeoutExpired:
+            test.kill()
+            output = "Timeout expired!!"
+
+        cat.kill()
+        test.kill()
+
+        target = "2642.08"
+
+        found = find_float(output, "Surface area of the entire tank: ")
+        print(f"### Expected ###\nSurface area of the entire tank: {target}\n#### Found ####\nSurface area of the entire tank: {found}")
+
+        # Standard unit test case with an associated error message
+        if target in output:
+            self.assertTrue(True, msg="")
+        elif "2642.07" in output:
+            self.assertTrue(True, msg="")
+        else:
+            self.assertTrue(False, msg="")
+
+        cat.terminate()
+        test.terminate()
+    
+
+    # Associated point value within GradeScope
+    @weight(0.5)
+    def test07(self):
+        #Title used by Gradescope 
+        """HW1A - Testcase 2 - Volume Fluid"""
 
         # Create a subprocess to run the students code and with our test file 
         cat = subprocess.Popen(["cat", "/autograder/source/input/inA3.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -257,42 +292,9 @@ class TestDiff(unittest.TestCase):
     
     # Associated point value within GradeScope
     @weight(0.5)
-    def test07(self):
-        #Title used by Gradescope 
-        """HW1A - Surface Area Fluid"""
-
-        # Create a subprocess to run the students code and with our test file 
-        cat = subprocess.Popen(["cat", "/autograder/source/input/inA2.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        test = subprocess.Popen(["./HW1A"], stdin= cat.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        try:
-            output, _ = test.communicate(timeout=10)
-            output = output.strip().decode('utf-8')
-        except subprocess.TimeoutExpired:
-            test.kill()
-            output = "Timeout expired!!"
-
-        cat.kill()
-        test.kill()
-
-        target = "125.66"
-
-        found = find_float(output, "Surface area covered by the fluid: ")
-        print(f"### Expected ###\nSurface area covered by the fluid: {target}\n#### Found ####\nSurface area covered by the fluid: {found}")
-
-        # Standard unit test case with an associated error message
-        if target in output:
-            self.assertTrue(True, msg="")
-        else:
-            self.assertTrue(False, msg="")
-
-        cat.terminate()
-        test.terminate()
-    
-    # Associated point value within GradeScope
-    @weight(0.5)
     def test08(self):
         #Title used by Gradescope 
-        """HW1A - Surface Area Fluid"""
+        """HW1A - Testcase 2 - Surface Area Fluid"""
 
         # Create a subprocess to run the students code and with our test file 
         cat = subprocess.Popen(["cat", "/autograder/source/input/inA3.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -384,7 +386,7 @@ class TestDiff(unittest.TestCase):
     @weight(1)
     def test11(self):
         #Title used by Gradescope 
-        """HW1B - Integer Representation"""
+        """HW1B - Float to Integer"""
 
         # Create a subprocess to run the students code and with our test file 
         cat = subprocess.Popen(["cat", "/autograder/source/input/inB1.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -403,6 +405,8 @@ class TestDiff(unittest.TestCase):
         test.kill()
         ref.kill()
 
+        print(f"Input: f\nR = 0.4, G = 0, B = 1\n\n")
+
         result = compare_strings(output, reference)
         print(result)
 
@@ -420,7 +424,7 @@ class TestDiff(unittest.TestCase):
     @weight(1)
     def test12(self):
         #Title used by Gradescope 
-        """HW1B - Integer Representation"""
+        """HW1B - Float to Integer"""
 
         # Create a subprocess to run the students code and with our test file 
         cat = subprocess.Popen(["cat", "/autograder/source/input/inB4.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -439,6 +443,8 @@ class TestDiff(unittest.TestCase):
         test.kill()
         ref.kill()
 
+        print(f"Input: f\nR = 0.27, G = 0.87, B = 32\n\n")
+
         result = compare_strings(output, reference)
         print(result)
 
@@ -456,7 +462,7 @@ class TestDiff(unittest.TestCase):
     @weight(1)
     def test13(self):
         #Title used by Gradescope 
-        """HW1B - Float Representation"""
+        """HW1B - Integer to Float"""
 
         # Create a subprocess to run the students code and with our test file 
         cat = subprocess.Popen(["cat", "/autograder/source/input/inB2.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -475,6 +481,8 @@ class TestDiff(unittest.TestCase):
         test.kill()
         ref.kill()
 
+        print(f"Input: i\nR = 255, G = 0, B = 255\n\n")
+
         result = compare_strings(output, reference)
         print(result)
 
@@ -492,7 +500,7 @@ class TestDiff(unittest.TestCase):
     @weight(1)
     def test14(self):
         #Title used by Gradescope 
-        """HW1B - Float Representation"""
+        """HW1B - Integer to Float"""
 
         # Create a subprocess to run the students code and with our test file 
         cat = subprocess.Popen(["cat", "/autograder/source/input/inB5.txt"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -510,6 +518,8 @@ class TestDiff(unittest.TestCase):
         cat.kill()
         test.kill()
         ref.kill()
+
+        print(f"Input: i\nR = 40, G = 254, B = 98\n\n")
 
         result = compare_strings(output, reference)
         print(result)
@@ -547,6 +557,8 @@ class TestDiff(unittest.TestCase):
         test.kill()
         ref.kill()
 
+        print(f"Input: j\n\n")
+
         result = compare_strings(output, reference)
         print(result)
 
@@ -582,6 +594,8 @@ class TestDiff(unittest.TestCase):
         cat.kill()
         test.kill()
         ref.kill()
+
+        print(f"Input: 6\n\n")
 
         result = compare_strings(output, reference)
         print(result)
