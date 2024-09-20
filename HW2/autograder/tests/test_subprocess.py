@@ -700,7 +700,7 @@ class TestDiff(unittest.TestCase):
         cat.terminate()
 
     # Associated point value within GradeScope
-    @weight(0)
+    @weight(1)
     def test20(self):
         #Title used by Gradescope 
         """HW2C - Exit"""
