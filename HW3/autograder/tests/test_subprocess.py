@@ -295,7 +295,7 @@ class TestDiff(unittest.TestCase):
         reference = "Please enter an initial integer value in the range [0,255]: Value must be between 0 and 255. Please enter an initial value in the range [0,255]: Value must be between 0 and 255. Please enter an initial value in the range [0,255]: Value must be between 0 and 255. Please enter an initial value in the range [0,255]: Please enter the desired number of iterations: Please enter the size of each possible update for each iteration: "
         cat.kill()
 
-        print(f"Input Sequence: 260, 256, -9\n")
+        print(f"Input Sequence: 260, 256, -9, 80, 5, 16\n")
 
         result = compare_strings(output, reference, 1)
         print(result)
