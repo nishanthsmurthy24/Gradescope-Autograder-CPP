@@ -223,7 +223,7 @@ class TestDiff(unittest.TestCase):
             cat.kill()
             output = "Timeout expired!!"
 
-        print(f"Initial Vaue: 255\nNo. of Iterations: 10\nUpdate Size: ±10\n\nYour Output\n\n{output}")
+        print(f"Initial Value: 255\nNo. of Iterations: 10\nUpdate Size: ±10\n\nYour Output\n\n{output}")
 
         num_lines = len(output.splitlines())
 
@@ -257,7 +257,7 @@ class TestDiff(unittest.TestCase):
             cat.kill()
             output = "Timeout expired!!"
 
-        print(f"Initial Vaue: 0\nNo. of Iterations: 20\nUpdate Size: ±2\n\nYour Output\n\n{output}")
+        print(f"Initial Value: 0\nNo. of Iterations: 20\nUpdate Size: ±2\n\nYour Output\n\n{output}")
 
         num_lines = len(output.splitlines())
 
@@ -333,7 +333,7 @@ class TestDiff(unittest.TestCase):
         cat.kill()
         ref.kill()
 
-        print(f"Initial Vaue: 200\nNo. of Iterations: 10\nUpdate Size: 0\n")
+        print(f"Initial : 200\nNo. of Iterations: 10\nUpdate Size: 0\n")
 
         result = compare_strings(output, reference, 10)
         print(result)
