@@ -555,7 +555,7 @@ class TestDiff(unittest.TestCase):
         # Example usage:
         time, meridian = extract_time_components(output)
 
-        print(f"Started at 1 PM, moving Forwards in Time by 6 hrs\n\n### Expected ###\n{target} o'clock\n#### Found ####\n{time} o'clock")
+        print(f"Started at 9 AM, moving Forwards in Time by 10 hrs\n\n### Expected ###\n{target} o'clock\n#### Found ####\n{time} o'clock")
 
         cat.kill()
 
@@ -588,7 +588,7 @@ class TestDiff(unittest.TestCase):
         # Example usage:
         time, meridian = extract_time_components(output)
 
-        print(f"Started at 1 PM, moving Forwards in Time by 6 hrs\n\n### Expected ###\n{target}\n#### Found ####\n{meridian}")
+        print(f"Started at 9 AM, moving Forwards in Time by 10 hrs\n\n### Expected ###\n{target}\n#### Found ####\n{meridian}")
 
         cat.kill()
 
